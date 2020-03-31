@@ -4,8 +4,8 @@ import { mergeOptions } from './lib/options.js'
 class Scribe {
   constructor(options) {
     this.options = mergeOptions(options)
-    this.strings = this.options.source.strings || []
-    this.dictionary = this.options.source.strings || []
+    this.strings = this.options.source
+    this.dictionary = []
     this.finished = {
       strings: false,
       dictionary: false,
@@ -14,21 +14,7 @@ class Scribe {
     this._init()
   }
 
-  _generateNew() {
-    return new Scribe({
-      ...this.options,
-      source: {
-        dictionary: this.dictionary,
-        strings: this.strings,
-      },
-    })
-  }
-
   _init() {
-    if (!this.options.el) {
-      throw new Error('Element supplied to Scribe is null')
-    }
-
     if (this.options.config.strings.autoStart) {
       this.parse(this.options.el)
 
@@ -71,7 +57,10 @@ class Scribe {
 
   parse(el) {
     const toParse = el || this.options.el
-    this.strings = recursiveParser(toParse, [])
+    if (!toParse) {
+      throw new Error('DOM Element supplied to Scribe is null')
+    }
+    this.strings = recursiveParser(toParse, this.options.source)
     this._sortIfNeeded(this.strings, this.options.config.strings)
     this._setFinished('strings')
 
