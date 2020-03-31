@@ -1,0 +1,14 @@
+{
+  "name": "@blksnk/scribe",
+  "version": "1.0.0",
+  "description": "innerText HTML parser",
+  "main": "src/index.js",
+  "author": {
+    "name": "Jean-Nicolas Veigel",
+    "email": "art.jnveigel@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
