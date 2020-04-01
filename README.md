@@ -10,19 +10,19 @@ Exports results in JSON format.
 Install the package with your package manager of choice.
 
 ```bash
-yarn add @blksnk/scribe
+yarn add html-scribe
 # or
-npm install --save @blksnk/scribe
+npm install --save html-scribe
 ```
 
 Import the package.
 
 ```javascript
-import Scribe from '@blksnk/scribe'
+import Scribe from 'html-scribe'
 
 // or
 
-const Scribe = require('@blksnk/scribe')
+const Scribe = require('html-scribe')
 ```
 
 
